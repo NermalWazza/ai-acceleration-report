@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Acceleration Question — AI and Civilisational Change</title>
+<meta name="description" content="An evidence-labelled, offline-readable report on what AI is measurably changing, what is only speculation, and what ordinary people can do with that.">
+<style>
+:root{--bg:#0f1218;--fg:#e3e7ee;--mut:#9aa4b5;--card:#171c26;--card2:#1d2431;--line:#2a3243;--acc:#6cb6ff;
+--blue:#6cb6ff;--purple:#b794f6;--ochre:#e0a93b;--red:#ff6b62;--green:#4cc764}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,"Segoe UI",Roboto,sans-serif}
+a{color:var(--acc)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--ochre);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--card);padding:8px;z-index:20}
+nav{position:sticky;top:0;z-index:10;background:rgba(15,18,24,.96);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;padding:0 12px}
+nav a{display:inline-block;padding:.8em .7em;color:var(--mut);text-decoration:none;font-size:.85rem}
+nav a:hover{color:var(--fg)}
+main,header .in,footer .in{max-width:1040px;margin:0 auto;padding:0 16px}
+header{background:radial-gradient(1200px 400px at 70% 0,#1a2540 0,transparent 70%),var(--bg);padding:36px 0 18px;border-bottom:1px solid var(--line)}
+header .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.1;margin:.2em 0 .3em}
+.kicker{color:var(--ochre);letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;font-weight:700}
+.lede{color:#c9d1de;font-size:1.1rem}
+h2{font-size:1.6rem;margin:2.2em 0 .4em;padding-bottom:.25em;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);font-weight:400;margin-right:.4em}
+h3{font-size:1.1rem;margin:1.4em 0 .3em}
+p{margin:.6em 0}
+.mut{color:var(--mut)}.small{font-size:.88rem}
+.tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;padding:.1em .55em;border-radius:99px;border:1.5px solid;vertical-align:.1em;white-space:nowrap}
+.tag.b{color:var(--blue)}.tag.p{color:var(--purple)}.tag.o{color:var(--ochre)}.tag.r{color:var(--red)}.tag.g{color:var(--green)}
+.tag.b,.tag.p,.tag.o,.tag.r,.tag.g{border-color:currentColor}
+.box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.box.b{border-left-color:var(--blue)}.box.p{border-left-color:var(--purple)}.box.o{border-left-color:var(--ochre)}.box.r{border-left-color:var(--red)}.box.g{border-left-color:var(--green)}
+.box>.tag{margin-bottom:.4em}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--line);border-radius:8px;padding:12px 14px}
+.card.b{border-top-color:var(--blue)}.card.p{border-top-color:var(--purple)}.card.o{border-top-color:var(--ochre)}.card.r{border-top-color:var(--red)}.card.g{border-top-color:var(--green)}
+.card h3{margin:.3em 0 .2em}.card .big{font-size:2rem;font-weight:800;line-height:1.1}
+figure{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{color:var(--mut);font-size:.86rem;margin-top:8px}
+svg text{fill:#d7deea;font-family:system-ui,"Segoe UI",sans-serif}
+svg .mu{fill:#9aa4b5}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+th,td{padding:.55em .7em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--card);color:var(--mut)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:12px 0;padding:.2em 14px}
+summary{cursor:pointer;padding:.6em 0;font-weight:600}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.tl h3{margin-top:0}
+.tl ul{list-style:none;margin:0;padding:0;border-left:3px solid var(--line)}
+.tl li{padding:.3em 0 .7em 14px;position:relative}
+.tl li::before{content:"";position:absolute;left:-8px;top:.75em;width:13px;height:13px;border-radius:50%;background:var(--bg);border:3px solid var(--blue)}
+.tl .ai li::before{border-color:var(--ochre)}
+.tl b{color:var(--fg)}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.92rem}
+.steps li::before{content:counter(s);display:inline-block;background:var(--acc);color:#0f1218;font-weight:800;border-radius:50%;width:1.6em;height:1.6em;text-align:center;margin-right:.5em}
+.pair{display:grid;grid-template-columns:90px 1fr 1fr;gap:8px;align-items:stretch;margin:6px 0}
+.pair>div{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:.92rem}
+.pair .t{background:none;border:0;color:var(--mut);font-weight:700}
+.pair .u{border-left:4px solid var(--green)}.pair .h{border-left:4px solid var(--red)}
+.cite{font-size:.78rem;text-decoration:none;vertical-align:super;white-space:nowrap}
+.src li{margin:.5em 0}
+.src .q{font-size:.8rem;color:var(--mut)}
+footer{border-top:1px solid var(--line);margin-top:3em;padding:18px 0 40px;color:var(--mut);font-size:.85rem}
+@media(max-width:760px){body{font-size:16px}header .grid,.cols,.tl{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.pair .t{padding:2px 0}}
+@media(max-width:760px){figure.ch{overflow-x:auto}figure.ch svg{min-width:560px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{
+:root{--bg:#fff;--fg:#111;--mut:#444;--card:#fff;--card2:#fff;--line:#bbb;--acc:#0b5fa5;--blue:#0b5fa5;--purple:#6a3fb5;--ochre:#8a5a00;--red:#b3261e;--green:#1b6e2e}
+body{font-size:11pt;background:#fff;color:#111}nav,.skip{display:none}header{background:#fff}
+svg text{fill:#111}svg .mu{fill:#444}details{break-inside:avoid}details>*{display:block}figure,.card,.box{break-inside:avoid}
+a{color:#0b5fa5}}
+</style></head>
+<body>
+<a class="skip" href="#summary">Skip to summary</a>
+<nav aria-label="Sections">
+<a href="#summary">Summary</a><a href="#s-moment">1 Moment</a><a href="#s-change">2 Changing</a><a href="#s-scale">3 Scale</a><a href="#s-waves">4 Waves</a><a href="#s-futures">5 Futures</a><a href="#s-other">6 Other side</a><a href="#s-ledger">7 Ledger</a><a href="#s-comm">8 Communicating</a><a href="#s-flow">9 Workflow</a><a href="#s-start">10 Start</a><a href="#s-sources">11 Sources</a>
+</nav>
+
+<header><div class="in"><div class="grid">
+<div>
+<div class="kicker">Evidence-labelled report · BP-AI-WAVE-001 · 2026-10-16</div>
+<h1>The Acceleration Question</h1>
+<p class="lede">Something in AI is measurably speeding up. Much of what is said about it is hype, fear, or guesswork. This report separates the two, so you can see what we know, what we only infer, and what nobody knows.</p>
+<p class="small mut">Not a prediction, not an advertisement, not a warning. Every claim is tagged by how well it is supported. Written in English (AU); units metric; dates YYYY-MM-DD.</p>
+</div>
+<figure style="margin:0">
+<svg viewBox="0 0 520 300" role="img" aria-labelledby="hero-t hero-d">
+<title id="hero-t">Abstract rising curve with question marks beyond the evidence</title>
+<desc id="hero-d">A solid line rises across the chart then becomes dashed and fans into three possible paths, labelled uncertain. It is decorative and contains no data.</desc>
+<defs><linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#6cb6ff"/><stop offset="1" stop-color="#b794f6"/></linearGradient></defs>
+<g stroke="#2a3243" stroke-width="1"><path d="M30 260H500M30 200H500M30 140H500M30 80H500"/></g>
+<path d="M30 250 C130 245 200 230 270 190 S330 120 350 100" fill="none" stroke="url(#hg)" stroke-width="5" stroke-linecap="round"/>
+<g fill="none" stroke="#e0a93b" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round"><path d="M350 100 C400 55 440 30 495 20"/><path d="M350 100 C410 90 450 85 495 82"/><path d="M350 100 C400 125 440 160 495 190"/></g>
+<g fill="#6cb6ff"><circle cx="60" cy="249" r="5"/><circle cx="130" cy="244" r="5"/><circle cx="200" cy="232" r="5"/><circle cx="270" cy="190" r="5"/><circle cx="350" cy="100" r="6"/></g>
+<line x1="350" y1="100" x2="350" y2="270" stroke="#9aa4b5" stroke-dasharray="3 5"/>
+<text x="356" y="283" class="mu" font-size="13">edge of the evidence</text>
+<text x="40" y="285" class="mu" font-size="13">measured</text>
+<text x="415" y="22" font-size="13" fill="#e0a93b">?</text><text x="415" y="78" font-size="13" fill="#e0a93b">?</text><text x="470" y="178" font-size="13" fill="#e0a93b">?</text>
+</svg>
+<figcaption>Original illustration, <strong>AI-generated (Claude, Sonnet 5.5)</strong>; decorative, not data. No third-party imagery is used anywhere in this report.</figcaption>
+</figure>
+</div></div></header>
+
+<main>
+<section id="summary" aria-labelledby="h-sum">
+<h2 id="h-sum">Executive summary <span class="small mut">(readable on its own — about 1 minute)</span></h2>
+<div class="box b" style="font-size:1.02rem">
+<ul style="margin:.2em 0;padding-left:1.2em">
+<li><span class="tag b">BLUE · FACT</span> Measured AI capability, spending and use are rising fast: training compute of notable models has grown ~4.1× per year and of frontier models ~5.3× per year (to May 2024) <a class="cite" href="#s4">[S4]</a>; the length of software tasks AI can finish autonomously doubled roughly every 6.5 months over 2019–2025 and every ~4.3 months since 2023 <a class="cite" href="#s2">[S2]</a><a class="cite" href="#s3">[S3]</a>; global corporate AI investment reached $581.7 billion in 2025 <a class="cite" href="#s1">[S1]</a>.</li>
+<li><span class="tag b">BLUE · FACT</span> The progress is <em>jagged</em>: models that win maths-olympiad gold read analogue clocks correctly about half the time <a class="cite" href="#s1">[S1]</a>.</li>
+<li><span class="tag r">RED · RISK</span> Harms are already measurable: US fraud complaints with an AI reference reported adjusted losses of about $893 million in 2025, and the FBI notes many victims do not realise AI was involved <a class="cite" href="#s8">[S8]</a>; entry-level software employment (age 22–25) fell nearly 20% since 2024 <a class="cite" href="#s1">[S1]</a>.</li>
+<li><span class="tag o">OCHRE · SPECULATION</span> Whether this becomes a civilisation-scale transformation, a plateau, or something messier is <strong>not known</strong>. Cyclic “fourth wave” history theories are contested metaphors, not forecasts <a class="cite" href="#s13">[S13]</a>. Radical life extension is speculation; there is no evidence it is expected.</li>
+<li><span class="tag g">GREEN · ACTION</span> One person can help ordinary people understand this by publishing small, sourced, honestly-labelled pages — starting with this one, after human review.</li>
+</ul></div>
+
+<h3>How to read the colours</h3>
+<div class="legend" role="list" aria-label="Evidence classes">
+<span role="listitem" class="tag b">BLUE · FACT / EVIDENCE</span><span role="listitem" class="tag p">PURPLE · INTERPRETATION</span><span role="listitem" class="tag o">OCHRE · UNCERTAINTY / SPECULATION</span><span role="listitem" class="tag r">RED · RISK / WEAKNESS</span><span role="listitem" class="tag g">GREEN · ACTION / OPPORTUNITY</span>
+</div>
+<p class="small mut">Every colour is paired with a text label. A “fact” here means a figure reported by the cited source on the date shown — see §11 for which sources I read directly and which I only saw through secondary coverage.</p>
+</section>
+
+<section id="s-moment"><h2><span class="n">1</span>The Moment</h2>
+<p>Most people met modern AI as a chat box. Behind that box, three things are happening at once: models are getting more capable, they are getting cheaper to use, and enormous physical infrastructure is being built to run them. Each could stall for its own reasons. Together they make the question worth asking: <strong>is this the start of a change as large as printing, electricity or the internet — or a bubble of impressive demos?</strong></p>
+<div class="box p"><span class="tag p">PURPLE · INTERPRETATION</span><p style="margin:0">This report’s working answer: the <em>measured</em> trends justify taking the question seriously; they do <em>not</em> justify certainty in either direction. The honest position is a wide range of outcomes.</p></div>
+<div class="box r"><span class="tag r">RED · CHALLENGE TO THE THESIS</span>
+<ul style="margin:.2em 0;padding-left:1.2em"><li>“Exponential-looking” is not “sustained exponential”. Most growth curves bend into S-curves when a resource runs out (power, chips, data, money, attention).</li>
+<li>Benchmarks are not the economy. A model passing an exam is not a workplace transformed.</li>
+<li>“Unprecedented” is a claim to test, not assume: every earlier wave also felt unprecedented to people living through it.</li>
+<li>Much of the loudest evidence comes from organisations that sell, or invest in, AI.</li></ul></div>
+</section>
+
+<section id="s-change"><h2><span class="n">2</span>What Is Actually Changing?</h2>
+<p>Six measurements, each with its date and limits. Source numbers in brackets link to §11.</p>
+<div class="cards">
+<div class="card b"><span class="tag b">BLUE · FACT</span><div class="big">4.1–5.3× / yr</div><h3>Training compute</h3><p class="small">Epoch AI, 2010–May 2024: notable models 4.1× per year (90% CI 3.7–4.6×); frontier (top-10) models 5.3× (4.9–5.7×). Recent frontier growth is 3.3–4.2× depending on method; Epoch cannot rule out acceleration. Database not comprehensive. <a class="cite" href="#s4">[S4]</a></p></div>
+<div class="card b"><span class="tag b">BLUE · FACT</span><div class="big">~6.5 → ~4.3 months</div><h3>Task-length doubling time</h3><p class="small">METR Time Horizon 1.1 (2026-01): 50%-reliability task length doubled every 196.5 days (~6.5 months) over 2019–2025, 130.8 days (107–161) since 2023, and 88.6 days (~2.9 months) since 2024. Software, ML and cyber tasks; measurements above 16 h are unreliable. <a class="cite" href="#s2">[S2]</a><a class="cite" href="#s3">[S3]</a></p></div>
+<div class="card b"><span class="tag b">BLUE · FACT</span><div class="big">$581.7 bn</div><h3>Corporate AI investment, 2025</h3><p class="small">Up 130% on the prior year (Stanford AI Index 2026, published 2026-04-13). AI data-centre power capacity: 29.6 GW. <a class="cite" href="#s1">[S1]</a></p></div>
+<div class="card b"><span class="tag b">BLUE · FACT</span><div class="big">53%</div><h3>Population adoption in 3 years</h3><p class="small">Generative AI reached 53% population adoption within three years (AI Index); the US ranks 24th at 28.3%. Definitions vary between countries and technologies. <a class="cite" href="#s1">[S1]</a></p></div>
+<div class="card b"><span class="tag b">BLUE · FACT</span><div class="big">9×–900× / yr</div><h3>Falling price of a given capability</h3><p class="small">Epoch (2025-03, six benchmarks, data to 2025-02): price to reach a given performance fell 9–900× per year depending on milestone (40× for GPT-4-level PhD science questions); the fastest declines were the latest and may not persist. An independent paper (2025-11) finds ~5–10× per year. <a class="cite" href="#s5">[S5]</a><a class="cite" href="#s6">[S6]</a></p></div>
+<div class="card b"><span class="tag b">BLUE · FACT</span><div class="big">88%</div><h3>Organisational adoption</h3><p class="small">AI Index 2026: organisational adoption of AI reached 88%. Definitions of “adoption” vary by survey. <a class="cite" href="#s1">[S1]</a></p></div>
+</div>
+
+<figure class="ch" tabindex="0" aria-label="Chart (scrolls sideways on small screens)">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="ca-t ca-d">
+<title id="ca-t">Compounding of 4× and 5× annual growth over five years, log scale</title>
+<desc id="ca-d">Bars show 4× growth reaching 1,024× after five years and 5× growth reaching 3,125×. Illustrative arithmetic, not a forecast.</desc>
+<g stroke="#2a3243"><path d="M60 250H620M60 194.5H620M60 139H620M60 83.5H620"/></g>
+<g class="mu" font-size="12" text-anchor="end"><text class="mu" x="54" y="254">1×</text><text class="mu" x="54" y="198">10×</text><text class="mu" x="54" y="143">100×</text><text class="mu" x="54" y="87">1,000×</text></g>
+<g fill="#6cb6ff"><rect x="85" y="216.6" width="36" height="33.4"/><rect x="195" y="183.1" width="36" height="66.9"/><rect x="305" y="149.7" width="36" height="100.3"/><rect x="415" y="116.3" width="36" height="133.7"/><rect x="525" y="82.9" width="36" height="167.1"/></g>
+<g fill="#b794f6"><rect x="125" y="211.2" width="36" height="38.8"/><rect x="235" y="172.4" width="36" height="77.6"/><rect x="345" y="133.6" width="36" height="116.4"/><rect x="455" y="94.7" width="36" height="155.3"/><rect x="565" y="55.9" width="36" height="194.1"/></g>
+<g font-size="11" text-anchor="middle"><text x="103" y="211">4</text><text x="143" y="205">5</text><text x="213" y="177">16</text><text x="253" y="166">25</text><text x="323" y="144">64</text><text x="363" y="127">125</text><text x="433" y="111">256</text><text x="473" y="88">625</text><text x="543" y="77">1,024</text><text x="583" y="50">3,125</text></g>
+<g font-size="12" text-anchor="middle" class="mu"><text class="mu" x="125" y="270">Year 1</text><text class="mu" x="235" y="270">Year 2</text><text class="mu" x="345" y="270">Year 3</text><text class="mu" x="455" y="270">Year 4</text><text class="mu" x="565" y="270">Year 5</text></g>
+<rect x="70" y="8" width="12" height="12" fill="#6cb6ff"/><text x="88" y="19" font-size="12">4× per year</text><rect x="180" y="8" width="12" height="12" fill="#b794f6"/><text x="198" y="19" font-size="12">5× per year</text>
+</svg>
+<figcaption><span class="tag p">PURPLE · INTERPRETATION</span> <strong>What a 4× or 5× yearly trend would mean if it simply continued.</strong> Working: 4⁵ = 4×4×4×4×4 = 1,024; 5⁵ = 3,125. The two rates bracket Epoch AI’s estimates of 4.1× (notable models) and 5.3× (frontier models), 2010–May 2024 <a class="cite" href="#s4">[S4]</a>. <span class="tag r">RED · LIMIT</span> This is arithmetic, <strong>not a forecast</strong>: chips, electricity, money and data all constrain it. Log scale (each gridline is ×10).</figcaption>
+</figure>
+
+<figure class="ch" tabindex="0" aria-label="Chart (scrolls sideways on small screens)">
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="mh-t mh-d">
+<title id="mh-t">Illustrative growth of autonomous task length under two doubling times</title>
+<desc id="mh-d">Starting at 1 hour, a 7-month doubling reaches about 10.8 hours after 24 months; a 4.3-month doubling reaches about 47.9 hours.</desc>
+<g stroke="#2a3243"><path d="M70 250H600M70 216.7H600M70 183.3H600M70 150H600M70 116.7H600M70 83.3H600M70 50H600"/></g>
+<g font-size="12" text-anchor="end"><text class="mu" x="64" y="254">1 h</text><text class="mu" x="64" y="221">2 h</text><text class="mu" x="64" y="187">4 h</text><text class="mu" x="64" y="154">8 h</text><text class="mu" x="64" y="121">16 h</text><text class="mu" x="64" y="87">32 h</text><text class="mu" x="64" y="54">64 h</text></g>
+<line x1="70" y1="250" x2="598" y2="64" stroke="#e0a93b" stroke-width="3"/>
+<line x1="70" y1="250" x2="598" y2="135.7" stroke="#6cb6ff" stroke-width="3"/>
+<g fill="#e0a93b"><circle cx="334" cy="157" r="4"/><circle cx="598" cy="64" r="5"/></g><g fill="#6cb6ff"><circle cx="334" cy="193" r="4"/><circle cx="598" cy="135.7" r="5"/></g>
+<text x="470" y="52" font-size="13" fill="#e0a93b">≈47.9 h</text><text x="470" y="127" font-size="13" fill="#6cb6ff">≈10.8 h</text>
+<g font-size="12" text-anchor="middle"><text class="mu" x="70" y="272">month 0</text><text class="mu" x="334" y="272">12</text><text class="mu" x="598" y="272">24 months</text></g>
+<rect x="80" y="10" width="12" height="12" fill="#e0a93b"/><text x="98" y="21" font-size="12">doubling every 4.3 months</text><rect x="300" y="10" width="12" height="12" fill="#6cb6ff"/><text x="318" y="21" font-size="12">doubling every 7 months</text>
+</svg>
+<figcaption><span class="tag p">PURPLE · INTERPRETATION</span> <strong>Why the doubling time matters.</strong> Working: horizon = 1 h × 2^(months ÷ doubling time). 24 ÷ 7 = 3.43 doublings → 2^3.43 ≈ 10.8 h; 24 ÷ 4.3 = 5.58 doublings → 2^5.58 ≈ 47.9 h. The 1-hour start is illustrative (METR reported ≈1 h for Claude 3.7 Sonnet in early 2025 <a class="cite" href="#s2">[S2]</a>); 7 months is METR’s original rounded figure and 4.3 months its since-2023 estimate <a class="cite" href="#s3">[S3]</a>. <span class="tag r">RED · LIMITS</span> Software tasks at 50% success; METR says extrapolation may not hold and that measurements above 16 h are unreliable with its current task suite <a class="cite" href="#s2">[S2]</a>, so the right-hand end of both lines is outside what can be measured. Not a forecast.</figcaption>
+</figure>
+
+<h3>The frontier is jagged, not smooth</h3>
+<figure class="ch" tabindex="0" aria-label="Chart (scrolls sideways on small screens)">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="jf-t jf-d">
+<title id="jf-t">Uneven AI capability, selected measurements</title>
+<desc id="jf-d">Bars on a 0–100% scale: coding benchmark SWE-bench Verified near 100%, Terminal-Bench 77.3%, analogue clock reading 50.1%, real household robot tasks 12%.</desc>
+<g stroke="#2a3243"><path d="M230 20V190M326 20V190M422 20V190M518 20V190M614 20V190"/></g>
+<g font-size="12" class="mu"><text class="mu" x="230" y="208" text-anchor="middle">0%</text><text class="mu" x="326" y="208" text-anchor="middle">25%</text><text class="mu" x="422" y="208" text-anchor="middle">50%</text><text class="mu" x="518" y="208" text-anchor="middle">75%</text><text class="mu" x="614" y="208" text-anchor="end">100%</text></g>
+<g font-size="13"><text x="222" y="42" text-anchor="end">Coding (SWE-bench Verified, 2025)</text><text x="222" y="86" text-anchor="end">Agent tasks (Terminal-Bench)</text><text x="222" y="130" text-anchor="end">Reading analogue clocks</text><text x="222" y="174" text-anchor="end">Real household robot tasks</text></g>
+<g fill="#6cb6ff"><rect x="230" y="28" width="384" height="20"/><rect x="230" y="72" width="297" height="20"/></g><g fill="#e0a93b"><rect x="230" y="116" width="192" height="20"/><rect x="230" y="160" width="46" height="20"/></g>
+<g font-size="12"><text x="606" y="42" text-anchor="end" fill="#0f1218" font-weight="700">≈100%</text><text x="519" y="86" text-anchor="end" fill="#0f1218" font-weight="700">77.3%</text><text x="414" y="130" text-anchor="end" fill="#0f1218" font-weight="700">50.1%</text><text x="283" y="174">12%</text></g>
+</svg>
+<figcaption><span class="tag b">BLUE · FACT</span> Values from the Stanford AI Index 2026 <a class="cite" href="#s1">[S1]</a>: SWE-bench Verified rose from 60% to near 100% in a year; Terminal-Bench from 20% (2025) to 77.3%; the top model reads analogue clocks correctly 50.1% of the time; robots succeed at 12% of real household tasks. Each figure was read on a Stanford HAI page. <span class="tag r">RED · LIMIT</span> Different benchmarks, different scales, not comparable with each other. Bars are drawn to the 0–100% axis; “≈100%” is the source’s “near 100%”.</figcaption>
+</figure>
+
+<details><summary>Technical note: how these numbers were handled</summary>
+<p class="small">METR’s “50% time horizon” is the human-completion time of tasks that an AI agent solves half the time. The trend is robust to a 10× measurement error in absolute terms (shifting predicted arrival of month-long tasks by about 2 years), but METR flags external validity — whether benchmark tasks resemble real work — as the main uncertainty <a class="cite" href="#s2">[S2]</a>. Epoch’s price-decline range (9–900× per year) depends on benchmark and performance milestone, and covers models up to 2025-02 <a class="cite" href="#s5">[S5]</a>; the independent paper attributes ~3× per year to algorithmic efficiency alone <a class="cite" href="#s6">[S6]</a>. Epoch’s compute estimates are sensitive to modelling choices (e.g. whether the AlphaGo outliers are excluded), which is why recent frontier growth is 3.3× or 4.2× depending on method <a class="cite" href="#s4">[S4]</a>. A 2026-01 METR revision changed some model estimates substantially (older GPT-4 versions down 35–57%, GPT-5 up 55%), which steepens the recent trend <a class="cite" href="#s3">[S3]</a>.</p></details>
+</section>
+
+<section id="s-scale"><h2><span class="n">3</span>Why Scale Matters</h2>
+<p>A tool used by a hundred people is a product. A tool used by a billion is infrastructure — and infrastructure changes what is normal, what is cheap, and what can go wrong. The same system behaves differently at each order of magnitude.</p>
+<div class="cards">
+<div class="card p"><span class="tag p">PURPLE · INTERPRETATION</span><h3>10² – 10³ users or agents</h3><p class="small">Lab pilots. Failures are anecdotes; a human checks everything.</p></div>
+<div class="card p"><span class="tag p">PURPLE · INTERPRETATION</span><h3>10⁴ – 10⁶</h3><p class="small">Rare failures become daily events. Workflows reorganise around the tool. Misuse starts to pay.</p></div>
+<div class="card p"><span class="tag p">PURPLE · INTERPRETATION</span><h3>10⁷ – 10⁸</h3><p class="small">Habits, norms and regulation lag behind. Energy and chip supply become strategic constraints.</p></div>
+<div class="card p"><span class="tag p">PURPLE · INTERPRETATION</span><h3>10⁹ + (and agents ≫ people)</h3><p class="small">Agents interacting with agents; failures correlate across everything that shares a model.</p></div>
+</div>
+<h3>Scaling by building: the compute race</h3>
+<p><span class="tag b">BLUE · FACT</span> The AI Index reports AI data-centre power capacity of 29.6 GW and corporate investment of $581.7 billion in 2025 <a class="cite" href="#s1">[S1]</a>. The IEA’s <em>Energy and AI</em> base case puts global data-centre electricity use at about 415 TWh in 2024 (~1.5% of world electricity) and about 945 TWh in 2030 (just under 3%); electricity use of accelerated (AI) servers grows ~30% per year, and the US adds ~240 TWh (+130%). The IEA states “substantial uncertainty”: its 2035 sensitivity cases range from a plateau near 700 TWh (Headwinds) to over 1,700 TWh (Lift-Off) <a class="cite" href="#s7">[S7]</a>.</p>
+<p><span class="tag o">OCHRE · CONTESTED</span> xAI (Elon Musk) is the most publicised example of a “build it bigger, build it faster” approach: Colossus in Memphis, reportedly powered partly by on-site gas turbines and batteries, with a stated aim of gigawatt-scale clusters. Reported GPU counts and power (1 GW vs 2 GW; ~555,000 vs ~770,000 GPUs) <strong>differ between sources</strong>, are largely company claims, and one analysis of satellite imagery argues the site is well short of 1 GW <a class="cite" href="#s14">[S14]</a>. I treat the <em>direction</em> (single-site clusters at gigawatt scale are being attempted) as plausible and the <em>numbers</em> as unverified. Other major labs pursue comparable buildouts; this report does not rank them.</p>
+<figure class="ch" tabindex="0" aria-label="Chart (scrolls sideways on small screens)">
+<svg viewBox="0 0 640 400" role="img" aria-labelledby="fl-t fl-d">
+<title id="fl-t">Reinforcing feedback loop and the forces that limit it</title>
+<desc id="fl-d">A cycle: better models lead to more use and revenue, then more investment, then more compute and data centres, back to better models. Below, limiting forces: electricity, chips, data, cost, regulation, public trust.</desc>
+<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#b794f6"/></marker></defs>
+<g fill="#1d2431" stroke="#b794f6" stroke-width="2"><rect x="40" y="30" width="200" height="64" rx="10"/><rect x="400" y="30" width="200" height="64" rx="10"/><rect x="400" y="200" width="200" height="64" rx="10"/><rect x="40" y="200" width="200" height="64" rx="10"/></g>
+<g font-size="14" text-anchor="middle"><text x="140" y="68">Better models</text><text x="500" y="68">More use &amp; revenue</text><text x="500" y="238">More investment</text><text x="140" y="238">More compute &amp; data centres</text></g>
+<g stroke="#b794f6" stroke-width="3" fill="none" marker-end="url(#ar)"><path d="M244 62H394"/><path d="M500 98V194"/><path d="M396 232H246"/><path d="M140 196V100"/></g>
+<text x="320" y="150" font-size="14" text-anchor="middle" fill="#b794f6">R: reinforcing loop</text><text x="320" y="170" font-size="12" text-anchor="middle" class="mu">(only while each step keeps paying off)</text>
+<g fill="#1d2431" stroke="#ff6b62" stroke-width="2"><rect x="40" y="305" width="560" height="60" rx="10"/></g>
+<text x="320" y="328" font-size="13" text-anchor="middle" fill="#ff6b62" font-weight="700">B: balancing forces</text>
+<text x="320" y="350" font-size="13" text-anchor="middle">electricity supply · chip supply · training data · cost · regulation · public trust</text>
+</svg>
+<figcaption><span class="tag p">PURPLE · INTERPRETATION</span> A simplified causal model — my synthesis, not a measured system. The loop is real only to the extent the middle steps (revenue, investment) hold; the AI Index records the investment, not that it pays back. Whether balancing forces win is <span class="tag o">OCHRE · UNKNOWN</span>.</figcaption>
+</figure>
+</section>
+
+<section id="s-waves"><h2><span class="n">4</span>Historical Waves</h2>
+<div class="tl">
+<div><h3>Earlier transitions</h3><ul>
+<li><b>c.1450</b> — Movable-type printing in Europe</li>
+<li><b>1882</b> — First central electric power stations (e.g. Pearl Street, New York)</li>
+<li><b>1946</b> — ENIAC, an early general-purpose electronic computer</li>
+<li><b>1991–93</b> — World Wide Web released; first popular browsers</li>
+<li><b>2007</b> — First iPhone released (smartphone era)</li></ul></div>
+<div class="ai"><h3>AI milestones</h3><ul class="ai">
+<li><b>2017</b> — Transformer architecture published</li>
+<li><b>2022-11-30</b> — ChatGPT released publicly</li>
+<li><b>2025-03</b> — METR task-length paper <a class="cite" href="#s2">[S2]</a></li>
+<li><b>2026-01</b> — METR Time Horizon 1.1 <a class="cite" href="#s3">[S3]</a></li>
+<li><b>2026-04-13</b> — Stanford AI Index 2026 <a class="cite" href="#s1">[S1]</a></li></ul></div>
+</div>
+<p class="small mut"><span class="tag o">OCHRE · NOTE</span> Left-column dates are standard reference dates I did not individually re-verify in this session (see §11); the AI items are sourced as marked. A direct “years to mass adoption” comparison would need like-for-like data: the Our World in Data technology-adoption page I fetched gave no figures <a class="cite" href="#s15">[S15]</a>, so I do <strong>not</strong> claim AI is faster than electricity or the internet — only that the AI Index reports 53% population adoption of generative AI within three years <a class="cite" href="#s1">[S1]</a>.</p>
+<h3>The fourth-wave hypothesis</h3>
+<p>The operator’s intuition resembles the Strauss–Howe generational theory: history moves in roughly 80–100-year cycles of four “turnings”, the fourth being a crisis followed by renewal <a class="cite" href="#s13">[S13]</a>.</p>
+<div class="cols">
+<div class="box g"><span class="tag g">GREEN · WHERE THE ANALOGY HELPS</span><ul style="margin:.2em 0;padding-left:1.2em"><li>Technologies do arrive in waves: a breakthrough, a build-out, a shake-out, then ordinary life.</li><li>Institutions typically lag a new technology by decades — a useful prompt to ask “what lags here?”.</li><li>Generations <em>do</em> experience formative events differently.</li></ul></div>
+<div class="box r"><span class="tag r">RED · WHERE IT FAILS</span><ul style="margin:.2em 0;padding-left:1.2em"><li>Critics say it lacks empirical rigour and cannot be falsified; I found no systematic empirical test <a class="cite" href="#s13">[S13]</a>.</li><li>It assumes outlooks are fixed by birth era; studies show beliefs change over a lifetime.</li><li>It is US-centred and picks dates to fit; AI diffusion is a global, technology-driven process, not a generational calendar.</li></ul></div>
+</div>
+<div class="box o"><span class="tag o">OCHRE · SPECULATION</span><p style="margin:0">Treat “fourth wave” as a <strong>metaphor for diffusion</strong> (S-curves, build-out, backlash, normalisation), not as a schedule. A stronger version of the idea would state in advance what observation would prove it wrong. This one does not.</p></div>
+</section>
+
+<section id="s-futures"><h2><span class="n">5</span>Possible Human Futures</h2>
+<p>Possibility is not probability. Each item separates what is observed from what is imagined.</p>
+<div class="cards">
+<div class="card g"><span class="tag g">GREEN · OPPORTUNITY</span><h3>Medicine</h3><p class="small"><span class="tag b">BLUE</span> Physicians reported up to 83% less time writing notes; but only 5% of reviewed clinical-AI studies used real clinical data <a class="cite" href="#s1">[S1]</a>. <span class="tag o">OCHRE</span> Large health gains remain unproven.</p></div>
+<div class="card g"><span class="tag g">GREEN · OPPORTUNITY</span><h3>Science</h3><p class="small"><span class="tag b">BLUE</span> AI-related publications in natural, physical and life sciences rose 26–28% year on year <a class="cite" href="#s1">[S1]</a> (a count of papers, not of discoveries).</p></div>
+<div class="card g"><span class="tag g">GREEN · OPPORTUNITY</span><h3>Education</h3><p class="small"><span class="tag b">BLUE</span> Four in five US high-school and college students use AI for schoolwork, but only 6% of teachers say school policies are clear <a class="cite" href="#s1">[S1]</a>. <span class="tag p">PURPLE</span> The opportunity is personalised help; the gap is guidance.</p></div>
+<div class="card o"><span class="tag o">OCHRE · SPECULATION</span><h3>Creativity, community, relationships</h3><p class="small"><span class="tag b">BLUE</span> About half of Americans expect AI to worsen creative thinking and relationships (Pew, June 2025) <a class="cite" href="#s9">[S9]</a>. Benefits (new tools, accessibility, shared projects) are plausible but not measured here.</p></div>
+</div>
+<h3>Longevity and immortality — kept deliberately separate</h3>
+<div class="cols">
+<div class="box b"><span class="tag b">BLUE · ESTABLISHED</span><p style="margin:0">Life expectancy is not guaranteed to rise: WHO reports global life expectancy <em>fell</em> by 1.8 years between 2019 and 2021 (pandemic) <a class="cite" href="#s10">[S10]</a>, and its 2026-10-02 estimates put it back at 73.3 years in 2023 versus 73.4 in 2019, with healthy life expectancy (62.8 years) still 0.4 years below 2019 <a class="cite" href="#s10">[S10]</a>. Established gains come from public health, vaccines, treatments and prevention — not from a single breakthrough.</p></div>
+<div class="box o"><span class="tag o">OCHRE · SPECULATION</span><p style="margin:0">Radical life extension, “digital continuity” and indefinite survival are hypotheses. <strong>This report found no evidence in this research pass that they are expected, scheduled or near.</strong> AI may speed drug discovery or diagnosis; that is not the same as ending ageing.</p></div>
+</div>
+
+<h3>Desirable and harmful outcomes, side by side</h3>
+<div role="table" aria-label="Upside and downside by theme">
+<div class="pair"><div class="t">Theme</div><div><span class="tag g">GREEN · POSSIBLE UPSIDE</span></div><div><span class="tag r">RED · POSSIBLE HARM</span></div></div>
+<div class="pair"><div class="t">Health</div><div class="u">Faster diagnosis, less paperwork for clinicians</div><div class="h">Unvalidated tools used on real patients</div></div>
+<div class="pair"><div class="t">Knowledge</div><div class="u">Expert-level help available to anyone</div><div class="h">Confident errors; synthetic content crowding out reliable sources</div></div>
+<div class="pair"><div class="t">Work</div><div class="u">Drudgery automated; new roles</div><div class="h">Entry-level squeeze (software devs 22–25: −~20% since 2024 <a class="cite" href="#s1">[S1]</a>)</div></div>
+<div class="pair"><div class="t">Power</div><div class="u">Small teams do what needed institutions</div><div class="h">Capability concentrated in a few firms and states; transparency falling (index 58 → 40 <a class="cite" href="#s1">[S1]</a>)</div></div>
+<div class="pair"><div class="t">Trust</div><div class="u">Better translation, accessibility</div><div class="h">Voice cloning, deepfakes, fraud at scale <a class="cite" href="#s8">[S8]</a></div></div>
+</div>
+</section>
+
+<section id="s-other"><h2><span class="n">6</span>The Other Side</h2>
+<div class="cards">
+<div class="card r"><span class="tag r">RED · RISK</span><div class="big">$893 M</div><h3>AI-referenced fraud losses, US 2025</h3><p class="small">FBI IC3: 22,364 complaints referencing AI, adjusted losses $893.3 M; investment complaints with an AI-nexus exceeded $632 M (of &gt;$8 bn total investment-scam losses). The FBI notes many victims do not realise AI was involved. <a class="cite" href="#s8">[S8]</a></p></div>
+<div class="card r"><span class="tag r">RED · RISK</span><div class="big">362</div><h3>Documented AI incidents, 2025</h3><p class="small">Up from 233 in 2024 (AI Index 2026). Incident databases depend on what gets reported, so part of the rise may be better counting (my caveat). <a class="cite" href="#s1">[S1]</a></p></div>
+<div class="card r"><span class="tag r">RED · RISK</span><div class="big">58 → 40</div><h3>Foundation Model Transparency Index</h3><p class="small">Average score fell; labs disclose less about their models. <a class="cite" href="#s1">[S1]</a></p></div>
+<div class="card r"><span class="tag r">RED · RISK</span><div class="big">31%</div><h3>Americans who trust government to regulate AI</h3><p class="small">AI Index summary. Governance capacity is itself a risk factor. <a class="cite" href="#s1">[S1]</a></p></div>
+</div>
+<figure class="ch" tabindex="0" aria-label="Chart (scrolls sideways on small screens)">
+<svg viewBox="0 0 640 170" role="img" aria-labelledby="fr-t fr-d">
+<title id="fr-t">US reported cybercrime losses and the AI-linked share</title>
+<desc id="fr-d">Horizontal bars in US dollars billions: 2024 total 16.6, 2025 total 20.9, AI-linked within 2025 0.893.</desc>
+<g font-size="13"><text x="150" y="38" text-anchor="end">All IC3 losses, 2024</text><text x="150" y="86" text-anchor="end">All IC3 losses, 2025</text><text x="150" y="134" text-anchor="end">AI-descriptor, 2025</text></g>
+<g fill="#6cb6ff"><rect x="160" y="22" width="332" height="24"/><rect x="160" y="70" width="418" height="24"/></g><rect x="160" y="118" width="17.9" height="24" fill="#ff6b62"/>
+<g font-size="13"><text x="498" y="39">US$16.6 bn</text><text x="572" y="87" text-anchor="end" fill="#0f1218" font-weight="700">US$20.877 bn</text><text x="184" y="135">US$0.893 bn (≈4.3% of 2025 total)</text></g>
+</svg>
+<figcaption><span class="tag b">BLUE · FACT</span> Source: FBI IC3 2025 annual report (primary PDF read): 1,008,597 complaints, $20.877 bn losses in 2025 (a 26% rise in losses on 2024); AI-referencing complaints $893,346,472. Working: 0.893 ÷ 20.877 = 0.0428 ≈ 4.3%. The 2024 total ($16.6 bn) is as printed in the same report. Scale 20 px = US$1 bn. <span class="tag r">RED · LIMITS</span> Complaints only; “AI-related” means the complaint <em>references</em> AI; total losses are not caused by AI. Because victims may not realise AI was involved <a class="cite" href="#s8">[S8]</a>, the true AI share is <span class="tag o">OCHRE · UNKNOWN</span>.</figcaption>
+</figure>
+<div class="box r"><span class="tag r">RED · RISKS WITH WEAK DATA HERE</span><p style="margin:0">Surveillance, concentrated power, security (AI-assisted cyber-attack), misinformation and unequal access are well-argued concerns but I did <strong>not</strong> assemble quantified evidence for them in this pass. Treat them as open risks, not measured ones — and note that “synthetic slop” (low-quality generated content) is widely discussed but was not measured here.</p></div>
+<div class="box p"><span class="tag p">PURPLE · INTERPRETATION</span><p style="margin:0">The two lists in §5 and §6 are not opposites of one outcome. The same capability that cuts clinicians’ paperwork also makes a convincing cloned voice cheap. Dual-use is the rule.</p></div>
+</section>
+
+<section id="s-ledger"><h2><span class="n">7</span>What We Know, Infer and Don’t Know</h2>
+<div class="tw"><table><thead><tr><th>Claim</th><th>Class</th><th>Confidence</th><th>What would change this</th></tr></thead><tbody>
+<tr><td>Training compute grew ~4.1× (notable) to ~5.3× (frontier) per year, 2010–May 2024</td><td><span class="tag b">BLUE</span></td><td>Medium-high; wide intervals on recent periods <a class="cite" href="#s4">[S4]</a></td><td>New data on pace since mid-2024</td></tr>
+<tr><td>Autonomous software-task length doubled every ~6.5 months (2019–25), ~4.3 months (since 2023)</td><td><span class="tag b">BLUE</span> (past) / <span class="tag o">OCHRE</span> (future)</td><td>Medium for past; low for extrapolation; &gt;16 h unreliable <a class="cite" href="#s2">[S2]</a><a class="cite" href="#s3">[S3]</a></td><td>Plateau; tasks beyond coding</td></tr>
+<tr><td>Capability is uneven across tasks</td><td><span class="tag b">BLUE</span></td><td>High <a class="cite" href="#s1">[S1]</a></td><td>—</td></tr>
+<tr><td>Investment and power build-out are large and rising</td><td><span class="tag b">BLUE</span></td><td>Medium-high <a class="cite" href="#s1">[S1]</a><a class="cite" href="#s7">[S7]</a></td><td>Payback shortfall; grid limits</td></tr>
+<tr><td>Feedback loop sustains growth (§3)</td><td><span class="tag p">PURPLE</span></td><td>Low-medium</td><td>Revenue falling short of spend</td></tr>
+<tr><td>AI fraud causes real, rising losses</td><td><span class="tag b">BLUE</span>/<span class="tag r">RED</span></td><td>High for the reported figures (primary); true AI share unknown <a class="cite" href="#s8">[S8]</a></td><td>Better attribution of AI involvement</td></tr>
+<tr><td>AI broadly raises productivity / living standards</td><td><span class="tag o">OCHRE</span></td><td>Low — not established here</td><td>Economy-wide productivity data</td></tr>
+<tr><td>History runs in predictable ~80-year waves</td><td><span class="tag o">OCHRE</span>/<span class="tag r">RED</span></td><td>Low <a class="cite" href="#s13">[S13]</a></td><td>A pre-registered, falsifiable test</td></tr>
+<tr><td>AI will deliver radical life extension / immortality</td><td><span class="tag o">OCHRE</span></td><td>No supporting evidence found</td><td>Reproducible human trials of ageing reversal</td></tr>
+<tr><td>Public understanding is low</td><td><span class="tag p">PURPLE</span></td><td>Low-medium (half of US adults more concerned than excited <a class="cite" href="#s9">[S9]</a> is attitude, not knowledge)</td><td>Direct knowledge surveys</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="s-comm"><h2><span class="n">8</span>Making This Understandable</h2>
+<p><span class="tag p">PURPLE · INTERPRETATION</span> Why many people may not see this: (1) the change is mostly invisible infrastructure; (2) the frontier is jagged, so personal experience varies; (3) hype fatigue — every wave arrives wrapped in promotion; (4) experts and the public are shown to differ in outlook (optimistic 59%, nervous 52% in one AI Index summary <a class="cite" href="#s1">[S1]</a>). These are hypotheses about audiences, not measured findings.</p>
+<div class="cards">
+<div class="card g"><span class="tag g">GREEN · DESIGN RULE</span><h3>Lead with the claim and its label</h3><p class="small">State the finding, then its evidence class, before any story.</p></div>
+<div class="card g"><span class="tag g">GREEN · DESIGN RULE</span><h3>Show the uncertainty</h3><p class="small">Ranges, “unknown” rows, and a challenge-the-thesis box in every report.</p></div>
+<div class="card g"><span class="tag g">GREEN · DESIGN RULE</span><h3>One idea per card</h3><p class="small">Plain language first; technical detail in expandable sections.</p></div>
+<div class="card g"><span class="tag g">GREEN · DESIGN RULE</span><h3>Work offline, no trackers</h3><p class="small">A single file anyone can save, print, translate and forward. (A web host may still log visitors’ IP addresses; GitHub says it does <a class="cite" href="#s11">[S11]</a>.)</p></div>
+</div>
+</section>
+
+<section id="s-flow"><h2><span class="n">9</span>From Ideas to Public Artifacts</h2>
+<ol class="steps">
+<li><b>Idea</b><br>One question, in a sentence.</li><li><b>Frame</b><br>Thesis plus how it could be wrong.</li><li><b>Investigate</b><br>Primary sources first; log dates.</li><li><b>Label</b><br>Tag every claim by class.</li><li><b>Visualise</b><br>Original diagrams; log units and limits.</li><li><b>Red-team</b><br>A reader or second model attacks it.</li><li><b>Publish</b><br>Static page, licence, version history.</li><li><b>Learn</b><br>Corrections logged; update the page.</li></ol>
+<p><span class="tag g">GREEN · ACTION</span> Cost: hosting is free (§10); the human cost is the time to review. This report was produced in one agent session — which is also the clearest demonstration of the risk in §6: <strong>speed makes verification the scarce step.</strong> Section 11 lists what a human should re-check first.</p>
+</section>
+
+<section id="s-start"><h2><span class="n">10</span>One Practical Starting Point</h2>
+<p><strong>Publish this single page, nothing else.</strong> No platform, no organisation, no audience-building. Hosting options (limits as verified on 2026-10-16):</p>
+<div class="tw"><table><thead><tr><th></th><th>GitHub Pages</th><th>Cloudflare Pages</th></tr></thead><tbody>
+<tr><th scope="row">Cost</th><td>Free tier</td><td>Free plan</td></tr>
+<tr><th scope="row">Size / traffic</th><td>Site ≤ 1 GB (hard); 100 GB/month bandwidth (soft); 10 builds/hour (soft) <a class="cite" href="#s11">[S11]</a></td><td>20,000 files per site; 25 MiB per file; 500 builds/month; 100 custom domains per project <a class="cite" href="#s12">[S12]</a>. The official page makes no bandwidth statement; “unmetered” claims are third-party and unverified</td></tr>
+<tr><th scope="row">Version history</th><td>Built in (git history)</td><td>Via a connected git repo, or direct upload (not verified in detail)</td></tr>
+<tr><th scope="row">Reader feedback</th><td>GitHub Issues — public, attributable, free</td><td>Needs a separate channel</td></tr>
+<tr><th scope="row">Restrictions &amp; privacy</th><td>Not for e-commerce or commercial SaaS; no sensitive transactions; visitor IP addresses are logged <a class="cite" href="#s11">[S11]</a>. Which plans/repo visibilities get Pages: <strong>not stated on the pages I read — check before use</strong></td><td>Not checked</td></tr>
+<tr><th scope="row">Needs account</th><td colspan="2">Both do — <strong>creating one requires your explicit approval</strong>; I created nothing.</td></tr>
+</tbody></table></div>
+<div class="box g"><span class="tag g">GREEN · RECOMMENDATION</span><p style="margin:0">GitHub Pages: a one-file public repo gives hosting, history, issue-based feedback and forking (translation, reuse) in one place. It fits a single static report. Cloudflare Pages is the alternative if you later expect heavy traffic. Other hosts (Netlify, Vercel, etc.) were <strong>not</strong> checked. This report is published on GitHub Pages; Pages availability for a given plan or repo visibility was not stated on the GitHub pages I read.</p></div>
+<h3>Licensing, feedback and measuring usefulness</h3>
+<ul>
+<li><strong>Licence (applied on publication):</strong> <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> for this report’s <em>original</em> text and SVG illustrations. Per the Creative Commons deed: anyone may share and adapt, including commercially, if they give credit, link the licence and indicate changes; no extra restrictions may be added. It does not cover the sources’ own data, which stay theirs, and it grants no warranty. I am not giving legal advice. Notice: “© 2026 NermalWazza. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Text and original SVG illustrations drafted with Claude (AI), under human direction and review. Third-party data and research are credited to their respective sources.”</li>
+<li><strong>Feedback:</strong> an Issue template with “what was unclear / what is wrong / source”.</li>
+<li><strong>Usefulness, not views:</strong> count (a) substantive corrections accepted, (b) translations or forks, (c) readers who can restate one finding afterwards, (d) days to fix a reported error. Page views alone say nothing about understanding, and third-party analytics would break the no-tracking promise.</li>
+</ul>
+<div class="box o"><span class="tag o">OCHRE · NEXT BOUNDED STEP</span><p style="margin:0">Before any publication: (1) you review the remaining items in §11 (“Still unverified”); (2) you confirm the licence and the author name in the notice; (3) you confirm GitHub Pages terms for your account and approve creating the repo (or use an existing one).</p></div>
+</section>
+
+<section id="s-sources" class="src"><h2><span class="n">11</span>Sources and Methodology</h2>
+<p><strong>Research and verification date:</strong> 2026-10-16 (Australia/Perth). <strong>Method:</strong> web search and page fetch by an AI agent (Claude Sonnet 5.5, Claude Code). In a second pass every consequential figure was re-checked against the primary publisher’s page or document where it could be opened; the status of each source is shown below. Nothing here has been independently replicated.</p>
+<ol>
+<li id="s1"><a href="https://hai.stanford.edu/news/inside-the-ai-index-12-takeaways-from-the-2026-report">Stanford HAI — Inside the AI Index: 12 takeaways from the 2026 report</a> and <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">2026 AI Index Report page</a> (report published 2026-04-13). <span class="q">Read (primary). Verified: $581.7 bn, 53%, 28.3%, −~20% developers 22–25, 58→40, 77.3%, 12%, 83%, 5%, 31%, 362/233 incidents, 88%, 50.1% clocks, SWE-bench 60%→near 100%. The HAI report page gives US private investment ($285.9 bn), a different measure from the global corporate figure.</span></li>
+<li id="s2"><a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">METR — Measuring AI ability to complete long tasks</a> (2025-03-19) and <a href="https://metr.org/time-horizons/">METR time horizons page</a> (updated 2026-09-08). <span class="q">Read (primary). The time-horizons page no longer states a doubling time and notes measurements above 16 h are unreliable.</span></li>
+<li id="s3"><a href="https://metr.org/blog/2026-1-29-time-horizon-1-1/">METR — Time Horizon 1.1</a> (2026-01). <span class="q">Read (primary): 196.5 d overall, 130.8 d [107–161] since 2023, 88.6 d since 2024; caveats on task composition and saturation.</span></li>
+<li id="s4"><a href="https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-to-5x-per-year">Epoch AI — Training compute of frontier AI models grows by 4–5× per year</a>. <span class="q">Read (primary): 4.1× (3.7–4.6), 5.3× (4.9–5.7), 3.3–4.2× recent frontier.</span></li>
+<li id="s5"><a href="https://epoch.ai/data-insights/llm-inference-price-trends">Epoch AI — LLM inference price trends</a> (2025-03-12). <span class="q">Read in part (primary; first ~100k of ~300k characters): 9–900×, 40× example. <strong>A “median 50×” figure seen in secondary coverage was not found and has been removed.</strong></span></li>
+<li id="s6"><a href="https://arxiv.org/abs/2511.23455">Gundlach, Lynch, Mertens, Thompson — “The Price of Progress” (arXiv:2511.23455)</a>. <span class="q">Read abstract (primary): ~5–10×/yr; ~3×/yr algorithmic.</span></li>
+<li id="s7"><a href="https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai">IEA — Energy and AI: Energy demand from AI</a> (2025). <span class="q">Read (primary): 415 → 945 TWh; ~30%/yr accelerated servers; US +240 TWh; 2035 cases. The earlier “AI facilities more than quadruple” claim was secondary and removed.</span></li>
+<li id="s8"><a href="https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf">FBI IC3 — 2025 Internet Crime Report (PDF)</a>. <span class="q">Read (primary, text extracted locally): 1,008,597 complaints; $20.877 bn; 22,364 AI-related complaints; $893,346,472; investment &gt;$632 M of &gt;$8 bn; BEC AI &gt;$30 M; romance &gt;$19 M. A release date was not found in the PDF text; none is claimed.</span></li>
+<li id="s9"><a href="https://www.pewresearch.org/short-reads/2026/03/12/key-findings-about-how-americans-view-artificial-intelligence">Pew Research Center — Key findings about how Americans view AI</a> (2026-03-12; June 2025 survey). <span class="q">Read (primary): 50% / 10% / 38%.</span></li>
+<li id="s10"><a href="https://www.who.int/news/item/15-05-2025-who-warns-of-slowing-global-health-gains-in-new-statistics-report">WHO — World Health Statistics 2025 news release</a> (2025-05-15) and <a href="https://www.who.int/news/item/02-10-2026-new-who-estimates-show-changing-global-health-landscape">WHO — new estimates (2026-10-02)</a>. <span class="q">Read (primary): −1.8 years 2019–21; 73.3 vs 73.4 years (2023 vs 2019); HALE 62.8, 0.4 below 2019.</span></li>
+<li id="s11"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits">GitHub Docs — GitHub Pages limits</a> and <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">What is GitHub Pages?</a>. <span class="q">Read (official). Plan/visibility availability not stated on either page.</span></li>
+<li id="s12"><a href="https://developers.cloudflare.com/pages/platform/limits/">Cloudflare Docs — Pages limits</a>. <span class="q">Read (official): 500 builds/month, 20,000 files, 25 MiB, 100 domains; no bandwidth statement.</span></li>
+<li id="s13"><a href="https://en.wikipedia.org/wiki/Strauss%E2%80%93Howe_generational_theory">Wikipedia — Strauss–Howe generational theory</a>; <a href="https://bigthink.com/the-past/strauss-howe-generational-theory-revolution-america/">Big Think</a>. <span class="q">Secondary, via summary; popular commentary; no systematic empirical test found.</span></li>
+<li id="s14"><a href="https://measuredai.substack.com/p/xai-colossus-data-center-cluster">Measured AI — xAI Colossus</a>; contrasting analysis: <a href="https://www.3dtested.com/tech-industry/artificial-intelligence/elon-musks-xai-colossus-2-is-nowhere-near-1-gigawatt-capacity-satellite-imagery-suggests-despite-claims-site-only-has-350-megawatts-of-cooling-capacity">3DTested</a>. <span class="q">Via summary only; low authority; sources conflict. Used qualitatively; numbers are contested.</span></li>
+<li id="s15"><a href="https://ourworldindata.org/technology-adoption">Our World in Data — Technology adoption</a>. <span class="q">Read; contained no usable figures.</span></li>
+<li id="s16"><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons — CC BY 4.0 deed</a>. <span class="q">Read (official): permissions and conditions as summarised in §10.</span></li>
+</ol>
+<h3>Verification log (second pass, 2026-10-16)</h3>
+<div class="tw"><table><thead><tr><th>Item</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>Epoch compute, METR doubling times, IEA TWh, FBI IC3, Pew, WHO, AI Index figures, GitHub/Cloudflare limits</td><td><span class="tag b">VERIFIED</span> against primary pages/documents (see notes above)</td></tr>
+<tr><td>“Compute 4–5×/yr”, “doubling every ~7 months”</td><td><span class="tag p">QUALIFIED</span> — replaced with exact source figures, intervals and period</td></tr>
+<tr><td>WHO life-expectancy “fell 1.8 years”</td><td><span class="tag p">QUALIFIED</span> — still true for 2019–21 but superseded by 2026-10-02 recovery estimates (added)</td></tr>
+<tr><td>Epoch “median ~50×/yr”; IEA “AI facilities quadruple”; FBI “likely undercount” wording; FBI release date; ChatGPT “900 M weekly users”</td><td><span class="tag r">REMOVED / REWORDED</span> — not found in primary sources</td></tr>
+<tr><td>Cloudflare “unmetered bandwidth”; GitHub Pages plan availability</td><td><span class="tag o">UNVERIFIED</span> — flagged in §10</td></tr>
+</tbody></table></div>
+<h3>Still unverified</h3>
+<ul>
+<li>xAI Colossus scale and power (§3) — conflicting low-authority sources; qualitative only.</li>
+<li>Epoch’s price-trend page was read only in part; METR 2026 page values for individual models were not extracted.</li>
+<li>Historical dates in §4 (printing c.1450, Pearl Street 1882, ENIAC 1946, Web 1991–93, iPhone 2007, Transformer 2017, ChatGPT 2022-11-30) are standard reference dates not re-checked this session.</li>
+<li>Strauss–Howe cycle length and critiques rest on secondary summaries.</li>
+<li>Claims about surveillance, concentrated power, AI-assisted cyber-attack, misinformation and unequal access are not quantified here.</li></ul>
+<h3>Template, imagery and licensing</h3>
+<ul>
+<li><strong>Template:</strong> no approved HTML report template was available to the author; design tokens (dark palette, system-font stack, responsive table wrapper, print rules) were adapted from the most recent dark report, an earlier private dark-themed report (2026-10-13). <strong>No template compliance is claimed.</strong></li>
+<li><strong>Images:</strong> all illustrations are original inline SVG drawn by Claude (AI-generated). No third-party images, fonts, scripts or trackers.</li>
+<li><strong>Licence of this report:</strong> CC BY 4.0 for original text and SVG illustrations (§10).</li>
+<li><strong>Limits:</strong> bounded MVP; hosts other than GitHub Pages and Cloudflare Pages not checked.</li></ul>
+</section>
+</main>
+<footer><div class="in">Version 1.1 · figures verified against primary sources 2026-10-16 · © 2026 NermalWazza · licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (original text and SVG illustrations); cited data belongs to its sources · text and illustrations drafted with Claude (AI) under human direction and review · one standalone file, works offline, prints cleanly. Model output is a draft: verify before relying on it. Feedback: open an Issue in the GitHub repository.</div></footer>
+</body></html>
