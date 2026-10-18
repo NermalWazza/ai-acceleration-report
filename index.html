@@ -2,6 +2,47 @@
 <html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Acceleration Question — AI and Civilisational Change</title>
 <meta name="description" content="An evidence-labelled, offline-readable report on what AI is measurably changing, what is only speculation, and what ordinary people can do with that.">
+<script data-portfolio-appearance>
+/* Shared by the portfolio documents so standalone copies need no external assets. */
+(function () {
+  'use strict';
+  var key = 'portfolio-appearance';
+  var root = document.documentElement;
+  var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  var preference = 'system';
+  function valid(value) { return value === 'light' || value === 'dark' || value === 'system'; }
+  function read() {
+    try { var value = window.localStorage.getItem(key); return valid(value) ? value : 'system'; }
+    catch (error) { return preference; }
+  }
+  function apply(value) {
+    preference = valid(value) ? value : 'system';
+    root.setAttribute('data-portfolio-appearance', preference);
+    root.setAttribute('data-theme', preference === 'system' ? (media && media.matches ? 'dark' : 'light') : preference);
+    var control = document.getElementById('portfolio-appearance');
+    if (control) control.value = preference;
+  }
+  function choose(value) {
+    if (!valid(value)) return;
+    try { window.localStorage.setItem(key, value); } catch (error) { /* Keep the current page usable without storage. */ }
+    apply(value);
+  }
+  apply(read());
+  function bind() {
+    var control = document.getElementById('portfolio-appearance');
+    if (control) { control.value = preference; control.addEventListener('change', function () { choose(control.value); }); }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, { once: true });
+  else bind();
+  function systemChanged() { if (preference === 'system') apply('system'); }
+  if (media) {
+    if (media.addEventListener) media.addEventListener('change', systemChanged);
+    else if (media.addListener) media.addListener(systemChanged);
+  }
+  window.addEventListener('storage', function (event) { if (event.key === key || event.key === null) apply(read()); });
+  window.addEventListener('pageshow', function () { apply(read()); });
+}());
+</script>
 <style>
 :root{--bg:#0f1218;--fg:#e3e7ee;--mut:#9aa4b5;--card:#171c26;--card2:#1d2431;--line:#2a3243;--acc:#6cb6ff;
 --blue:#6cb6ff;--purple:#b794f6;--ochre:#e0a93b;--red:#ff6b62;--green:#4cc764}
@@ -74,6 +115,28 @@ footer{border-top:1px solid var(--line);margin-top:3em;padding:18px 0 40px;color
 body{font-size:11pt;background:#fff;color:#111}nav,.skip{display:none}header{background:#fff}
 svg text{fill:#111}svg .mu{fill:#444}details{break-inside:avoid}details>*{display:block}figure,.card,.box{break-inside:avoid}
 a{color:#0b5fa5}}
+</style><style data-portfolio-appearance>
+/* The homepage controls one preference; documents keep their own typography and artwork. */
+@media screen {
+  :root[data-theme="light"] { color-scheme: light; }
+  :root[data-theme="dark"] { color-scheme: dark; }
+  .portfolio-appearance-control {display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 0;font:15px/1.5 "Segoe UI",Arial,sans-serif}
+  .portfolio-appearance-control label {font-weight:600}
+  .portfolio-appearance-control select {font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:8px 34px 8px 12px;border-radius:6px;min-height:44px}
+  .portfolio-appearance-control select:focus-visible {outline:3px solid var(--brass);outline-offset:3px}
+  html[data-theme="light"] {
+    --bg:#faf8f3;--panel:#ffffff;--panel2:#f0ede6;--line:#c5ccc9;--border:#bbc5c4;
+    --text:#202c30;--fg:#202c30;--muted:#4d6065;--mut:#4d6065;--card:#ffffff;--card2:#f0ede6;
+    --brass:#77501b;--cyan:#08667a;--acc:#125e99;--blue:#125e99;--purple:#6b408e;--ochre:#805600;--red:#a33329;--green:#246746;
+  }
+  html[data-theme="light"] body {background:var(--bg);color:var(--text)}
+  html[data-theme="light"] a:hover {color:#00485e}
+  html[data-theme="light"] .notice {background:#f1e9d9;color:#4f4028}
+  html[data-theme="light"] .button:hover {background:#efe3cd}
+}
+@media print { .portfolio-appearance-control {display:none} }
+
+@media screen{html[data-theme=light] nav{background:#faf8f3f5}html[data-theme=light] header{background:radial-gradient(1200px 400px at 70% 0,#e0eafb 0,transparent 70%),var(--bg)}html[data-theme=light] .lede{color:#3e5262}html[data-theme=light] svg text{fill:#273b4b}html[data-theme=light] svg .mu{fill:#526577}html[data-theme=light] .steps li::before{color:#fff}}
 </style></head>
 <body>
 <a class="skip" href="#summary">Skip to summary</a>

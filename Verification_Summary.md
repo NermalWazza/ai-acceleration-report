@@ -1,5 +1,13 @@
 # BP-AI-WAVE-001 — Verification Summary
 
+## Portfolio appearance update 18 October 2026
+
+The original verification and release-preparation record below is historical. The report is now published at https://nermalwazza.github.io/ai-acceleration-report/.
+
+The public report now includes a small inline appearance script that follows the Light, Dark or System choice on the portfolio homepage. The preference is stored locally in the browser; the script makes no network requests. Existing text and SVG artwork are retained. Light and dark rendering, saved preference, cross-tab updates and System behavior were checked for this appearance update. The original 16 October contrast results below describe that earlier edition, rather than a new exhaustive accessibility audit of both palettes.
+
+---
+
 Date: 2026-10-16 (Perth) · Report: `AI_Civilisational_Transformation_Report.html` v1.1
 Status: **Complete and verified for review. Nothing published; no accounts created; no private project files included.**
 
